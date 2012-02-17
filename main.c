@@ -1,7 +1,7 @@
 #include <sys/time.h>
-#include "nanotime.h"
 #include <pthread.h>
 #include "pipe/pipe_util.h"
+#include "nanotime/nanotime.h"
 #include "timer.h"
 
 void hello(void* args) {

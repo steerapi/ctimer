@@ -4,17 +4,17 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../main.c 
+../nanotime/nanotime.c 
 
 OBJS += \
-./main.o 
+./nanotime/nanotime.o 
 
 C_DEPS += \
-./main.d 
+./nanotime/nanotime.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
-%.o: ../%.c
+nanotime/%.o: ../nanotime/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C Compiler'
 	gcc -O0 -g3 -Wall -c -fmessage-length=0 -std=c99 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<"

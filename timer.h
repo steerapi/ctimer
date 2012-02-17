@@ -9,7 +9,7 @@
 #define TIMER_H_
 
 #include <sys/time.h>
-#include "nanotime.h"
+#include "nanotime/nanotime.h"
 #include <pthread.h>
 #include "pipe/pipe_util.h"
 #include <signal.h>

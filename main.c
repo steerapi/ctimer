@@ -24,10 +24,20 @@ int main() {
 	for (i = 0; i < 10; ++i) {
 		items[i] = setInterval((uint64_t) (i + 1) * NANO, hello, &args[i], 0);
 	}
+	sleep(1);
 	for (i = 0; i < 10; ++i) {
-		sleep(1);
 		clearInterval(items[i]);
 	}
+	clear_pool();
+	printf("DONE\n");
+	for (i = 0; i < 10; ++i) {
+		items[i] = setInterval((uint64_t) (i + 1) * NANO, hello, &args[i], 0);
+	}
+//	printf("Clear again\n");
+//	for (i = 0; i < 10; ++i) {
+//		sleep(1);
+//		clearInterval(items[i]);
+//	}
 	while (1) {
 		sleep(100);
 	}

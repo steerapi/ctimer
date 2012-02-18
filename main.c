@@ -2,7 +2,7 @@
 #include <pthread.h>
 #include "pipe/pipe_util.h"
 #include "nanotime/nanotime.h"
-#include "timer.h"
+#include "timer/timer.h"
 
 void hello(void* args) {
 	int a = *(int*) args;
@@ -18,13 +18,16 @@ int main() {
 	int args[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 	TimeItem* items[10];
 	int i;
-	for (i = 0; i < 10; ++i) {
-		items[i] = setTimeout((uint64_t) (i + 1) * NANO, hello, &args[i]);
-	}
 //	for (i = 0; i < 10; ++i) {
-//		sleep(5);
-//		clearInterval(items[i], 0, 0);
+//		items[i] = setTimeout((uint64_t) (i + 1) * NANO, hello, &args[i]);
 //	}
+	for (i = 0; i < 10; ++i) {
+		items[i] = setInterval((uint64_t) (i + 1) * NANO, hello, &args[i], 0);
+	}
+	for (i = 0; i < 10; ++i) {
+		sleep(1);
+		clearInterval(items[i]);
+	}
 	while (1) {
 		sleep(100);
 	}
